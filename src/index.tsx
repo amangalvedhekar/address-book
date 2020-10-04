@@ -4,12 +4,18 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import {store} from 'src/store';
-
+import {ThemeProvider} from 'styled-components';
+import GlobalStyles from 'src/theme/GlobalStyles';
+// import darkTheme from 'src/theme/dark';
+import lightTheme from 'src/theme/light';
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ThemeProvider theme={lightTheme}>
+      <GlobalStyles />
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

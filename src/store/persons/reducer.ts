@@ -1,11 +1,23 @@
 import {fetchPersonList} from 'src/store/persons/actions';
+import {Name} from 'src/models/addressBook';
 
-const initialState = {
+export interface ContactItem {
+  key: string;
+  name: Name;
+  phone: string;
+}
+
+export interface ContactListState {
+  personLists: ContactItem[];
+  isLoading: boolean;
+}
+
+const initialState: ContactListState = {
   personLists: [],
   isLoading: false,
 };
 
-export const personListsReducer = (state = initialState, action: any) => {
+export const personListsReducer = (state = initialState, action: any): ContactListState => {
   switch (action.type) {
     case fetchPersonList.REQUEST:
       return {

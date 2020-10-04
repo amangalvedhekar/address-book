@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import ContactDetails from 'src/components/ContactDetails';
+import {personListSelector} from 'src/store/persons/selectors';
 export default function ConnectedContactDetails() {
   const {id} = useParams();
-  const {personLists} = useSelector((state: any) => state?.contactList);
+  console.log(id, 'inside connected');
+  const personLists = useSelector(personListSelector);
   const [contactDetails, setContactDetails] = useState<any>();
   useEffect(() => {
     const foundDetails = personLists.find((elm: any) => elm.key === id);
@@ -19,7 +21,7 @@ export default function ConnectedContactDetails() {
           phoneNumber={contactDetails?.phone}
         />
       ) : (
-        <div>not fond</div>
+        <div>not found</div>
       )}
     </>
   );

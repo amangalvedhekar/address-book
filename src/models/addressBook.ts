@@ -12,7 +12,7 @@ export interface Name {
 }
 
 export interface Person {
-  name: any;
+  name: Name;
   phone: string;
 }
 

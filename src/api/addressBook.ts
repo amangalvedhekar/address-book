@@ -20,4 +20,5 @@ export const addressBookGet = ({results, seed, inc}: AddressBookGet) =>
     .then((response: AxiosResponse<AddressBookResponse>) => {
       const {data} = response;
       return data;
-    });
+    })
+    .catch((e) => console.log(e));

@@ -1,13 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import styled from 'styled-components';
 import ConnectedFetchList from 'src/containers/ConnectedFetchList';
 import ConnectedContactDetails from 'src/containers/ConnectedContactDetails';
-const Header = styled.h1`
-  border: 2px solid #61dafb;
-`;
+import Header from 'src/components/Header';
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Header>Address Book</Header>
@@ -18,9 +15,10 @@ function App() {
         <Route exact path="/contact-details/:id">
           <ConnectedContactDetails />
         </Route>
+        <Route path="*">
+          <div>not found</div>
+        </Route>
       </Switch>
     </Router>
   );
 }
-
-export default App;
