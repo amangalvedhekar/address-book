@@ -5,7 +5,6 @@ import ContactDetails from 'src/components/ContactDetails';
 import {personListSelector} from 'src/store/persons/selectors';
 export default function ConnectedContactDetails() {
   const {id} = useParams();
-  console.log(id, 'inside connected');
   const personLists = useSelector(personListSelector);
   const [contactDetails, setContactDetails] = useState<any>();
   useEffect(() => {
