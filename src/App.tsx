@@ -2,11 +2,12 @@ import React, {useCallback, useState} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import ConnectedFetchList from 'src/containers/ConnectedFetchList';
 import ConnectedContactDetails from 'src/containers/ConnectedContactDetails';
-import Header from 'src/components/Header';
 import {ThemeProvider} from 'styled-components';
 import darkTheme from 'src/theme/dark';
 import lightTheme from 'src/theme/light';
 import GlobalStyles from 'src/theme/GlobalStyles';
+import * as Grid from 'src/components/Grid';
+import ConnectedHeader from 'src/containers/ConnectedHeader';
 
 export default function App() {
   const [theme, setTheme] = useState<string>('light');
@@ -17,8 +18,16 @@ export default function App() {
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyles />
       <Router>
-        <Header>Address Book</Header>
-        <button onClick={handleThemeChange}>Toggle theme</button>
+        <Grid.Row>
+          <Grid.Col>
+            <ConnectedHeader />
+          </Grid.Col>
+          <Grid.Col>
+            <button onClick={handleThemeChange} style={{margin: 'auto'}}>
+              {`Switch from ${theme} theme`}
+            </button>
+          </Grid.Col>
+        </Grid.Row>
         <Switch>
           <Route exact path="/">
             <ConnectedFetchList />

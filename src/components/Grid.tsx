@@ -16,5 +16,5 @@ export const Row = styled.div`
 export const Col = styled.div`
   display: flex;
   flex-direction: column;
-  flex-basis: 100%;
+  flex-basis: 50%;
 `;
